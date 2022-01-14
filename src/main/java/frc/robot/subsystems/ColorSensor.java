@@ -47,7 +47,7 @@ public class ColorSensor extends SubsystemBase {
     }
     // otherwise put unknown
     else {
-      SmartDashboard.putString("color", "Uknown?");
+      SmartDashboard.putString("color", "Unknown?");
     }
 
     // Put all colors for debugging
