@@ -42,4 +42,5 @@ public final class Constants {
 	public static final double LIMELIGHT_HEIGHT = 39.25; //inches
 
 	public static final double COLOR_DIFFERENCE = 0.15;
+	public static final double RED_SENSITIVITY = 2;
 }
