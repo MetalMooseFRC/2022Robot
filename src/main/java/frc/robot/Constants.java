@@ -41,6 +41,7 @@ public final class Constants {
 	public static final double TARGET_HEIGHT = 57;  //inches
 	public static final double LIMELIGHT_HEIGHT = 39.25; //inches
 
-	public static final double COLOR_DIFFERENCE = 0.15;
-	public static final double RED_SENSITIVITY = 2;
+	// Decrease these numbers to make more sensitive
+	public static final double BLUE_SENSITIVITY = 0.15;
+	public static final double RED_SENSITIVITY = 0.30;
 }

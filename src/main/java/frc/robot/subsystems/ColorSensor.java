@@ -39,10 +39,10 @@ public class ColorSensor extends SubsystemBase {
     final double blue = detectedColor.blue;
 
     // If color is greater than other by COLOR_DIFFERENCE, then put on screen
-    if (red - blue > Constants.RED_SENSITIVITY * Constants.COLOR_DIFFERENCE){
+    if (red - blue > Constants.RED_SENSITIVITY){
       SmartDashboard.putString("color", "Red");
     }
-    else if (blue - red > Constants.COLOR_DIFFERENCE){
+    else if (blue - red > Constants.BLUE_SENSITIVITY){
       SmartDashboard.putString("color", "Blue");
     }
     // otherwise put unknown
