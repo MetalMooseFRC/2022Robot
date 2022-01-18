@@ -7,7 +7,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Limelight;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.math.controller.PIDController;
 
 public class VisionFollow extends CommandBase {
@@ -23,8 +22,7 @@ public class VisionFollow extends CommandBase {
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
-  public VisionFollow(DriveTrain driveTrain, Limelight limelight) {
-    addRequirements(driveTrain, limelight);
+  public VisionFollow() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

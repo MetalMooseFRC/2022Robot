@@ -19,7 +19,7 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private VisionFollow visionFollow;
+  private VisionFollow visionFollow = new VisionFollow();
   private CommandScheduler m_commandScheduler;
   private Limelight limelight;
   private DriveTrain driveTrain;
@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_commandScheduler.schedule(new VisionFollow(driveTrain, limelight));
+    CommandScheduler.getInstance().schedule(visionFollow);
   }
 
   @Override
