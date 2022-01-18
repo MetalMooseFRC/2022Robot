@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.math.controller.PIDController;
 
 public class VisionFollow extends CommandBase {
-  Limelight limelight = new Limelight();
-  DriveTrain driveTrain = new DriveTrain();
+  Limelight limelight;
+  DriveTrain driveTrain;
 
   private static final double kP = 7.0;
  // integral speed constant
@@ -24,7 +24,8 @@ public class VisionFollow extends CommandBase {
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
-  public VisionFollow() {
+  public VisionFollow(DriveTrain driveTrain, Limelight limelight) {
+    addRequirements(driveTrain, limelight);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
