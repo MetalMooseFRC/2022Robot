@@ -22,7 +22,8 @@ public class VisionFollow extends CommandBase {
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
-  public VisionFollow() {
+  public VisionFollow(Limelight limelight, DriveTrain driveTrain) {
+    addRequirements(limelight, driveTrain);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

@@ -19,11 +19,11 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  private VisionFollow visionFollow = new VisionFollow();
+  
   private CommandScheduler m_commandScheduler;
   private Limelight limelight;
   private DriveTrain driveTrain;
-
+  private VisionFollow visionFollow = new VisionFollow(limelight, driveTrain);
   private RobotContainer m_robotContainer;
 
   /**
