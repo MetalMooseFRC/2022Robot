@@ -20,7 +20,6 @@ public class VisionFollow extends CommandBase {
   // derivative speed constant
   private static final double kD = 1.5;
 
-  private final DifferentialDrive m_robotDrive = driveTrain.drive;
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
@@ -40,13 +39,13 @@ public class VisionFollow extends CommandBase {
   public void execute() {
     double pidOutput = m_pidController.calculate(limelight.getTx());
 
-    m_robotDrive.arcadeDrive(0.0, pidOutput);
+    driveTrain.drive.arcadeDrive(0.0, pidOutput);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_robotDrive.arcadeDrive(0.0, 0.0);
+    driveTrain.drive.arcadeDrive(0.0, 0.0);
   }
 
   // Returns true when the command should end.
