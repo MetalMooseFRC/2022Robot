@@ -18,6 +18,7 @@ import frc.robot.commands.VisionFollow;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private VisionFollow visionFollow;
+  private CommandScheduler m_commandScheduler;
 
   private RobotContainer m_robotContainer;
 
@@ -79,13 +80,12 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    visionFollow.initialize();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    visionFollow.execute();
+    m_commandScheduler.schedule(visionFollow);
   }
 
   @Override
