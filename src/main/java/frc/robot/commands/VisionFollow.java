@@ -39,13 +39,13 @@ public class VisionFollow extends CommandBase {
   public void execute() {
     double pidOutput = m_pidController.calculate(limelight.getTx());
 
-    m_robotDrive.arcadeDrive(0, pidOutput);
+    m_robotDrive.arcadeDrive(0.0, pidOutput);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
+    m_robotDrive.arcadeDrive(0.0, 0.0);
   }
 
   // Returns true when the command should end.
