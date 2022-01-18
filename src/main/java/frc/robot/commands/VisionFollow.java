@@ -7,8 +7,25 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Limelight;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.math.controller.PIDController;
 
 public class VisionFollow extends CommandBase {
+  Limelight limelight = new Limelight();
+  DriveTrain driveTrain = new DriveTrain();
+
+  private static final double kP = 7.0;
+
+  // integral speed constant
+  private static final double kI = 0.018;
+
+  // derivative speed constant
+  private static final double kD = 1.5;
+
+  private final DifferentialDrive m_robotDrive = driveTrain.drive;
+
+  private final PIDController m_pidController = new PIDController(kP, kI, kD);
+
   /** Creates a new VisionFollow. */
   public VisionFollow() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -17,19 +34,15 @@ public class VisionFollow extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_pidController.setSetpoint(0.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Limelight limelight = new Limelight();
-    DriveTrain driveTrain = new DriveTrain();
-    double tx = limelight.getTx();
-    if(tx > 1){
-      tx = 1;
-    } else if(tx < -1){
-      tx = -1;
-    }
+    double pidOutput = m_pidController.calculate(limelight.getTx());
+
+    m_robotDrive.arcadeDrive(0, pidOutput);
   }
 
   // Called once the command ends or is interrupted.
