@@ -15,15 +15,12 @@ public class VisionFollow extends CommandBase {
   DriveTrain driveTrain = new DriveTrain();
 
   private static final double kP = 7.0;
-
-  // integral speed constant
+ // integral speed constant
   private static final double kI = 0.018;
-
   // derivative speed constant
   private static final double kD = 1.5;
 
   private final DifferentialDrive m_robotDrive = driveTrain.drive;
-
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
