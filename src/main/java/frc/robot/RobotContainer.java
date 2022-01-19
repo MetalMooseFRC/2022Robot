@@ -8,10 +8,13 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.VisionFollow;
+import frc.robot.commands.DriveArcade;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.ColorSensor;
+import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,12 +24,21 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  //private final ColorSensor m_colorSensor = new ColorSensor();
-  //private final Limelight m_limelight = new Limelight();
 
+  // ************  OI Controller  ***************
+  private static final Joystick driverStick = new Joystick(Constants.DRIVER_STICK_PORT);
+
+  // ************  Subsystems  ***************
+  private DriveTrain m_driveTrain = new DriveTrain();
+
+  //private final ColorSensor m_colorSensor = new ColorSensor();
+  private final Limelight m_limelight = new Limelight();
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+
+  private final VisionFollow visionFollow = new VisionFollow(m_limelight, m_driveTrain);
+
 
   //private final VisionFollow visionFollow = new VisionFollow();
 
@@ -34,6 +46,11 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    m_driveTrain.setDefaultCommand(new DriveArcade(
+          () -> -driverStick.getY() * Constants.JOYSTICK_SPEED_FACTOR,
+          () -> driverStick.getZ() * Constants.JOYSTICK_TURN_FACTOR,
+          m_driveTrain));
   }
 
   /**

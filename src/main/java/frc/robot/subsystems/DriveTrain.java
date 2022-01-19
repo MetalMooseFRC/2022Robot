@@ -27,6 +27,8 @@ public class DriveTrain extends SubsystemBase {
   
   /** Creates a new DriveTrain. */
   public DriveTrain() {
+    // create deadband
+    drive.setDeadband(Constants.DEADBAND);
     // invert right motors
     m_motorsRight.setInverted(true);
   }

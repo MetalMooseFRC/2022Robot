@@ -8,22 +8,24 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Limelight;
 import edu.wpi.first.math.controller.PIDController;
+import frc.robot.Constants;
 
 public class VisionFollow extends CommandBase {
-  Limelight limelight = new Limelight();
-  DriveTrain driveTrain = new DriveTrain();
+  Limelight limelight;
+  DriveTrain driveTrain;
 
-  private static final double kP = 0.5;
+  private static final double kP = Constants.VISION_KD;
  // integral speed constant
-  private static final double kI = 0.018;
+  private static final double kI = Constants.VISION_KI;
   // derivative speed constant
-  private static final double kD = 1.5;
+  private static final double kD = Constants.VISION_KD;
 
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
   /** Creates a new VisionFollow. */
-  public VisionFollow() {
+  public VisionFollow(Limelight limelight, DriveTrain driveTrain) {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(limelight, driveTrain);
   }
 
   // Called when the command is initially scheduled.
