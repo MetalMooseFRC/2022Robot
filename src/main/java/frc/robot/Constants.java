@@ -44,4 +44,12 @@ public final class Constants {
 	// Decrease these numbers to make more sensitive
 	public static final double BLUE_SENSITIVITY = 0.15;
 	public static final double RED_SENSITIVITY = 0.30;
+
+	public static final double DEADBAND = 0.07;
+
+	public static final double VISION_KP = 0.5;
+ 	// integral speed constant
+  	public static final double VISION_KI = 0.018;
+  	// derivative speed constant
+  	public static final double VISION_KD = 1.5;
 }
