@@ -6,11 +6,15 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Constants;
 
 public class Limelight extends SubsystemBase {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+
+  NetworkTableEntry tx = table.getEntry("tx");
+  public double x;
 
   
   /** Creates a new Limelight. */
@@ -21,12 +25,12 @@ public class Limelight extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
+    x = tx.getDouble(0.0);
   }
 
   //get the x error between the crosshair and target
   public double getTx() {
-      return table.getEntry("tx").getDouble(0.0);
+      return x;
   }
 
   //get the y error between the crosshair and target
