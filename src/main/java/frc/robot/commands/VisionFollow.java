@@ -13,11 +13,11 @@ public class VisionFollow extends CommandBase {
   Limelight limelight = new Limelight();
   DriveTrain driveTrain = new DriveTrain();
 
-  private static final double kP = 0.5;
+  private static final double kP = 0.0000001;
  // integral speed constant
   private static final double kI = 0.018;
   // derivative speed constant
-  private static final double kD = 1.5;
+  private static final double kD = 1;
 
   private final PIDController m_pidController = new PIDController(kP, kI, kD);
 
@@ -35,10 +35,9 @@ public class VisionFollow extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(limelight.x);
     double pidOutput = m_pidController.calculate(limelight.x);
 
-    driveTrain.drive.arcadeDrive(0.0, pidOutput);
+    driveTrain.drive.arcadeDrive(0.0, -0.5*pidOutput);
   }
 
   // Called once the command ends or is interrupted.
