@@ -47,9 +47,9 @@ public final class Constants {
 
 	public static final double DEADBAND = 0.07;
 
-	public static final double VISION_KP = 1.5;
+	public static final double VISION_KP = 0.5;
  	// integral speed constant
-  	public static final double VISION_KI = 1.0;
+  	public static final double VISION_KI = 0.3;
   	// derivative speed constant
-  	public static final double VISION_KD = 0.3;
+  	public static final double VISION_KD = 0.35;
 }

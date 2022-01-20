@@ -12,8 +12,8 @@ import edu.wpi.first.math.controller.PIDController;
 import frc.robot.Constants;
 
 public class VisionFollow extends CommandBase {
-  Limelight limelight;
-  DriveTrain driveTrain;
+  Limelight m_limelight;
+  DriveTrain m_driveTrain;
 
   private static final double kP = Constants.VISION_KP;
  // integral speed constant
@@ -27,28 +27,31 @@ public class VisionFollow extends CommandBase {
   public VisionFollow(Limelight limelight, DriveTrain driveTrain) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(limelight, driveTrain);
+    m_limelight = limelight;
+    m_driveTrain = driveTrain;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_pidController.setSetpoint(0.0);
-    m_pidController.setTolerance(0.20);
+    m_pidController.setTolerance(1/27);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double pidOutput = m_pidController.calculate(limelight.x);
+    double pidOutput = m_pidController.calculate(m_limelight.x / 27);
 
+    System.out.println(pidOutput);
     SmartDashboard.putNumber("PID Output", pidOutput);
-    driveTrain.drive.arcadeDrive(0.0, pidOutput);
+    m_driveTrain.drive.arcadeDrive(0.0, -pidOutput);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveTrain.drive.arcadeDrive(0.0, 0.0);
+    m_driveTrain.drive.arcadeDrive(0.0, 0.0);
   }
 
   // Returns true when the command should end.
