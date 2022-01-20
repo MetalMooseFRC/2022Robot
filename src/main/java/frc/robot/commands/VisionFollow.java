@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Limelight;
@@ -14,7 +15,7 @@ public class VisionFollow extends CommandBase {
   Limelight limelight;
   DriveTrain driveTrain;
 
-  private static final double kP = Constants.VISION_KD;
+  private static final double kP = Constants.VISION_KP;
  // integral speed constant
   private static final double kI = Constants.VISION_KI;
   // derivative speed constant
@@ -32,14 +33,15 @@ public class VisionFollow extends CommandBase {
   @Override
   public void initialize() {
     m_pidController.setSetpoint(0.0);
+    m_pidController.setTolerance(0.20);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(limelight.x);
     double pidOutput = m_pidController.calculate(limelight.x);
 
+    SmartDashboard.putNumber("PID Output", pidOutput);
     driveTrain.drive.arcadeDrive(0.0, pidOutput);
   }
 

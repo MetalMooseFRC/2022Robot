@@ -37,7 +37,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  private final VisionFollow visionFollow = new VisionFollow(m_limelight, m_driveTrain);
+  public final VisionFollow visionFollow = new VisionFollow(m_limelight, m_driveTrain);
 
 
   //private final VisionFollow visionFollow = new VisionFollow();
@@ -51,6 +51,7 @@ public class RobotContainer {
           () -> -driverStick.getY() * Constants.JOYSTICK_SPEED_FACTOR,
           () -> driverStick.getZ() * Constants.JOYSTICK_TURN_FACTOR,
           m_driveTrain));
+    ;
   }
 
   /**
