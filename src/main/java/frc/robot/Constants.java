@@ -34,8 +34,10 @@ public final class Constants {
 	public static final int DRIVER_STICK_PORT = 0;
 	
 	public static final double MIN_JOYSTICK_INPUT = 0.1;
-	public static final double JOYSTICK_SPEED_FACTOR = 1.2;
-	public static final double JOYSTICK_TURN_FACTOR = 1.2;
+	// Must be <= 1
+	public static final double JOYSTICK_SPEED_FACTOR = 1;
+	// Must be <= 1
+	public static final double JOYSTICK_TURN_FACTOR = 0.6;
 	
 	
 	public static final double TARGET_HEIGHT = 57;  //inches
@@ -47,9 +49,13 @@ public final class Constants {
 
 	public static final double DEADBAND = 0.07;
 
+	//Proportional [P] Set point p means motor speed is going to be proportional to the amount of error, closer you get less motor speed
+	//Integral [I] it adds up the errors over time, final adjustments
+	//Derivative speed constant [D]
+	//Feed Forward [F] constant value applied to motors at all times, like zeroing scale, elevator needs to hold its weight
 	public static final double VISION_KP = 0.5;
- 	// integral speed constant
+	// integral speed constant
   	public static final double VISION_KI = 0.3;
-  	// derivative speed constant
-  	public static final double VISION_KD = 0.35;
+	// derivative speed constant [D]
+	public static final double VISION_KD = 0.35;
 }
