@@ -31,6 +31,9 @@ public final class Constants {
     public static final int MOTOR_RIGHT_2_ID = 2;
 	public static final int MOTOR_RIGHT_3_ID = 3;
 	
+	public static final int MOTOR_ELEVATOR_LEFT_4_ID = 7;
+	public static final int MOTOR_ELEVATOR_RIGHT_4_ID = 8;
+
 	public static final int DRIVER_STICK_PORT = 0;
 	
 	public static final double MIN_JOYSTICK_INPUT = 0.1;

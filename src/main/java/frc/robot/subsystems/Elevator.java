@@ -16,20 +16,18 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Elevator {
-    private final CANSparkMax m_motorLeft4 = new CANSparkMax(Constants.MOTOR_LEFT_1_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+   // private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_LEFT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
   
-    private final CANSparkMax m_motorRight4 = new CANSparkMax(Constants.MOTOR_RIGHT_1_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+   // private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_RIGHT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
     
-    /** Creates a new DriveTrain. */
+    /** Creates a new DriveTrain.
     public ElevatorDrive() {
-      // create deadband
-      drive.setDeadband(Constants.DEADBAND);
-      // invert right motors
-      m_motorRight4.setInverted(true);
+      
     }
   
     @Override
     public void periodic() {
       // This method will be called once per scheduler run
     }
-}
+*/
+  }
