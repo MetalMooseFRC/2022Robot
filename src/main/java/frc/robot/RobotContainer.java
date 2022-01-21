@@ -15,6 +15,7 @@ import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,7 +29,7 @@ public class RobotContainer {
   // ************  OI Controller  ***************
   private static final Joystick driverStick = new Joystick(Constants.DRIVER_STICK_PORT);
 
-  // ************  Subsystems  ***************
+  // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();
 
   //private final ColorSensor m_colorSensor = new ColorSensor();
@@ -60,7 +61,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+      // final JoystickButton lockonButton = new JoystickButton(driverStick, JoystickButton.k3.value)
+        // .whenActive(visionFollow);
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
