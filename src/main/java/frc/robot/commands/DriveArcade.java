@@ -7,6 +7,7 @@ package frc.robot.commands;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 
 public class DriveArcade extends CommandBase {
@@ -37,8 +38,12 @@ public class DriveArcade extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    // fb for forward/backward
+    double drive_fb = Constants.JOYSTICK_SPEED_FACTOR * m_speedSupplier.getAsDouble();
+    // lr for left/right
+    double drive_lr = Constants.JOYSTICK_TURN_FACTOR * m_turnSupplier.getAsDouble();
     // true squares inputs
-    m_driveTrain.drive.arcadeDrive(m_speedSupplier.getAsDouble(), m_turnSupplier.getAsDouble(), true);
+    m_driveTrain.drive.arcadeDrive(drive_fb, drive_lr, true);
     
   }
   

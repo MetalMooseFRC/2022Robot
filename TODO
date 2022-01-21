@@ -1,1 +1,4 @@
 Vision => Constants
+Naming Conventions file
+Keep track of vendordeps versions
+Live tuning on smartdashboard(should be in PID Command not PID controller) smartdashboard.put(controller instance)
