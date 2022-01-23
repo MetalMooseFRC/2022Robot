@@ -62,8 +62,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-      // final JoystickButton lockonButton = new JoystickButton(driverStick, JoystickButton.k3.value)
-        // .whenActive(visionFollow);
+      final JoystickButton lockonButton = new JoystickButton(driverStick, 5);
+        lockonButton.whenHeld(visionFollow);
   }
 
   /**

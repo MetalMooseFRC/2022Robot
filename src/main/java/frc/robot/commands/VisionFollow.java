@@ -10,6 +10,8 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Limelight;
 import edu.wpi.first.math.controller.PIDController;
 import frc.robot.Constants;
+import java.lang.Math;
+import java.security.ProviderException;
 
 public class VisionFollow extends CommandBase {
   Limelight m_limelight;
@@ -35,15 +37,20 @@ public class VisionFollow extends CommandBase {
   @Override
   public void initialize() {
     m_pidController.setSetpoint(0.0);
-    m_pidController.setTolerance(1/27);
+    m_pidController.setTolerance(Constants.VISION_FOV_ERROR);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     double pidOutput = m_pidController.calculate(m_limelight.x / 27);
+    
+    if (pidOutput < 0){pidOutput -= Constants.VISION_FF;}
+    else if (pidOutput > 0){pidOutput += Constants.VISION_FF;}
+    // Make sure PID Controller is capped to 1 (more would be bad)
+    double clamp = 1;
+    pidOutput = Math.max(-clamp, Math.min(clamp, pidOutput));
 
-    System.out.println(pidOutput);
     SmartDashboard.putNumber("PID Output", pidOutput);
     m_driveTrain.drive.arcadeDrive(0.0, -pidOutput);
   }

@@ -40,7 +40,7 @@ public final class Constants {
 	// Must be <= 1
 	public static final double JOYSTICK_SPEED_FACTOR = 1;
 	// Must be <= 1
-	public static final double JOYSTICK_TURN_FACTOR = 0.6;
+	public static final double JOYSTICK_TURN_FACTOR = 0.75;
 	
 	
 	public static final double TARGET_HEIGHT = 57;  //inches
@@ -56,9 +56,13 @@ public final class Constants {
 	//Integral [I] it adds up the errors over time, final adjustments
 	//Derivative speed constant [D]
 	//Feed Forward [F] constant value applied to motors at all times, like zeroing scale, elevator needs to hold its weight
-	public static final double VISION_KP = 0.5;
+	public static final double VISION_KP = 0.85;
 	// integral speed constant
-  	public static final double VISION_KI = 0.3;
+  	public static final double VISION_KI = 0.0;
 	// derivative speed constant [D]
-	public static final double VISION_KD = 0.35;
+	public static final double VISION_KD = 0.05;
+	// feed forward
+	public static final double VISION_FF = 0.14;
+	// robot can see 27*2 degrees and so this gives some room for error
+	public static final double VISION_FOV_ERROR = 5/27;
 }
