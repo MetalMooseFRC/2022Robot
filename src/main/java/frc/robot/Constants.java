@@ -40,7 +40,7 @@ public final class Constants {
 	// Must be <= 1
 	public static final double JOYSTICK_SPEED_FACTOR = 1;
 	// Must be <= 1
-	public static final double JOYSTICK_TURN_FACTOR = 0.75;
+	public static final double JOYSTICK_TURN_FACTOR = 0.85;
 	
 	
 	public static final double TARGET_HEIGHT = 57;  //inches
