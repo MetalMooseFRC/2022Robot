@@ -12,14 +12,11 @@ import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.Constants;
 
 import com.revrobotics.ColorSensorV3;
-import com.revrobotics.ColorMatchResult;
-import com.revrobotics.ColorMatch;
 
 public class ColorSensor extends SubsystemBase {
   
 
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
-  private final ColorMatch m_colorMatcher = new ColorMatch();
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
   
 

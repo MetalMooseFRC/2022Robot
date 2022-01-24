@@ -16,7 +16,7 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Elevator {
-   // private final CANSparkMax m_motorLeft = new CANS  parkMax(Constants.MOTOR_LEFT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+   // private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_LEFT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
   
    // private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_RIGHT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
     

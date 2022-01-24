@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.VisionFollow;
+import frc.robot.commands.Brake;
 import frc.robot.commands.DriveArcade;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Limelight;
@@ -38,8 +39,9 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  public final VisionFollow visionFollow = new VisionFollow(m_limelight, m_driveTrain);
-
+  // ************   Commands    ***************
+  public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
+  public final Brake m_brake = new Brake(m_driveTrain);
 
   //private final VisionFollow visionFollow = new VisionFollow();
 
@@ -62,8 +64,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-      final JoystickButton lockonButton = new JoystickButton(driverStick, 5);
-        lockonButton.whenHeld(visionFollow);
+      final JoystickButton lockonButton = new JoystickButton(driverStick, 2);
+        lockonButton.whenHeld(m_visionFollow);
+      final JoystickButton brakeButton = new JoystickButton(driverStick, 6);
+        brakeButton.whenHeld(m_brake);
   }
 
   /**
