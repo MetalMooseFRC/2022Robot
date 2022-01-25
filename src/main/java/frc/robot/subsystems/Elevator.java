@@ -4,30 +4,24 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//includes a group of two SmartMax MC'c (turning in opposite directions)
-//Add a command (no default for the Elevator) to run the motors from the operator's joystick: stick forward = motion one way; stick backward = motion other way
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class Elevator {
-   // private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_LEFT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+
+public class Elevator extends SubsystemBase {
+  private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_ELEVATOR_LEFT_4_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
   
-   // private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_RIGHT__ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-    
-    /** Creates a new DriveTrain.
-    public ElevatorDrive() {
-      
-    }
+  private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_ELEVATOR_RIGHT_4_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+   
   
-    @Override
-    public void periodic() {
-      // This method will be called once per scheduler run
-    }
-*/
+  /** Creates a new Elevator. */
+  public Elevator() {}
+
+  
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
   }
+}
