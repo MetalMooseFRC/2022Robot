@@ -5,9 +5,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import java.io.Console;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Constants;
 
@@ -24,6 +29,11 @@ public class DriveTrain extends SubsystemBase {
   private final MotorControllerGroup m_motorsRight = new MotorControllerGroup(m_motorRight1, m_motorRight2, m_motorRight3);
   
   public final DifferentialDrive drive = new DifferentialDrive(m_motorsLeft, m_motorsRight);
+
+  // Left Encoder
+  public final RelativeEncoder m_motorLeft_encoder = m_motorLeft2.getEncoder();
+  // Right Encoder
+  public final RelativeEncoder m_motorRight_encoder = m_motorRight2.getEncoder();
   
   /** Creates a new DriveTrain. */
   public DriveTrain() {
@@ -36,5 +46,8 @@ public class DriveTrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Right Encoder", m_motorRight_encoder.getPosition());
+    SmartDashboard.putNumber("Left Encoder", m_motorLeft_encoder.getPosition());
+
   }
 }
