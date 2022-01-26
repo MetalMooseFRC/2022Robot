@@ -26,12 +26,15 @@ public final class Constants {
 	public static final int MOTOR_ELEVATOR_RIGHT_4_ID = 8;
 
 	public static final int DRIVER_STICK_PORT = 0;
+	public static final int OP_STICK_PORT = 1;
 	
 	public static final double MIN_JOYSTICK_INPUT = 0.1;
 	// Must be <= 1
 	public static final double JOYSTICK_SPEED_FACTOR = 1;
 	// Must be <= 1
 	public static final double JOYSTICK_TURN_FACTOR = 0.85;
+
+	public static final double ELEVATOR_SPEED_FACTOR = 0.5;
 	
 	
 	public static final double TARGET_HEIGHT = 57;  //inches
