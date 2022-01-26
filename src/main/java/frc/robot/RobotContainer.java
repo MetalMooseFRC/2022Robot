@@ -59,11 +59,6 @@ public class RobotContainer {
           () -> driverStick.getZ(),
           m_driveTrain));
     ;
-    m_elevator.setDefaultCommand(new ElevatorControl(
-          m_elevator, 
-          () -> -opStick.getY()
-          ));
-    ;
   }
 
   /**
@@ -73,11 +68,18 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    // DRIVER STICK BUTTONS
       //final JoystickButton lockonButton = new JoystickButton(driverStick, 2);
       //  lockonButton.whenHeld(m_visionFollow);
-      final JoystickButton brakeButton = new JoystickButton(driverStick, 6);
+      final JoystickButton brakeButton = new JoystickButton(driverStick, Constants.DRIVER_BRAKE_BUTTON);
         brakeButton.whenHeld(m_brake);
-  }
+
+    // OPERATOR STICK BUTTONS
+      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
+        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
+      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
+        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
+    }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

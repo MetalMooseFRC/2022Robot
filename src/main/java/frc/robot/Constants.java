@@ -14,6 +14,12 @@ package frc.robot;
  */
 public final class Constants {
 
+	// DRIVER JOYSTICK BUTTONS
+	public static final int DRIVER_BRAKE_BUTTON = 6;
+	// OPERATOR JOYSTICK BUTTONS
+	public static final int OP_ELEVATOR_UP_BUTTON = 6;
+	public static final int OP_ELEVATOR_DOWN_BUTTON = 4;
+
 	public static final int MOTOR_LEFT_1_ID = 4;
 	public static final int MOTOR_LEFT_2_ID = 5;
 	public static final int MOTOR_LEFT_3_ID = 6;
@@ -32,10 +38,7 @@ public final class Constants {
 	// Must be <= 1
 	public static final double JOYSTICK_SPEED_FACTOR = 1;
 	// Must be <= 1
-	public static final double JOYSTICK_TURN_FACTOR = 0.85;
-
-	public static final double ELEVATOR_SPEED_FACTOR = 0.5;
-	
+	public static final double JOYSTICK_TURN_FACTOR = 0.85;	
 	
 	public static final double TARGET_HEIGHT = 57;  //inches
 	public static final double LIMELIGHT_HEIGHT = 39.25; //inches
