@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ElevatorControl extends CommandBase {
 
   private Elevator m_elevator;
   private int m_button;
-  private DoubleSupplier m_speedSupplier;
 
   // TODO: Need to make this constants and tune properly
   private final PIDController m_pidController = new PIDController(0.2, 0, 0);
@@ -31,11 +31,15 @@ public class ElevatorControl extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // Reset position
+    m_elevator.leftElevatorEncoder.setPosition(0);
+
     // Button switch case
     switch (m_button){
-      case Constants.OP_ELEVATOR_UP_BUTTON: m_pidController.setSetpoint(20); break;
-      case Constants.OP_ELEVATOR_DOWN_BUTTON: m_pidController.setSetpoint(0); break;
+      case Constants.OP_ELEVATOR_UP_BUTTON: m_pidController.setSetpoint(Constants.ELEVATOR_RANGE); break;
+      case Constants.OP_ELEVATOR_DOWN_BUTTON: m_pidController.setSetpoint(-Constants.ELEVATOR_RANGE); break;
     }
+    // TODO: Tune / make constant
     m_pidController.setTolerance(0.2);
   }
 
@@ -43,11 +47,12 @@ public class ElevatorControl extends CommandBase {
   @Override
   public void execute() {
     double pidOutput = m_pidController.calculate(m_elevator.leftElevatorEncoder.getPosition());
+    SmartDashboard.putNumber("pidOutput Elevator", pidOutput);
     
     //if (pidOutput < 0){pidOutput -= Constants.VISION_FF;}
     //else if (pidOutput > 0){pidOutput += Constants.VISION_FF;}
     // Make sure PID Controller is capped to 1 (more would be bad)
-    double clamp = 0.1;
+    double clamp = 1;
     pidOutput = Math.max(-clamp, Math.min(clamp, pidOutput));
 
     m_elevator.elevatorControllerGroup.set(pidOutput);
@@ -55,7 +60,9 @@ public class ElevatorControl extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_elevator.elevatorControllerGroup.set(0);
+  }
 
   // Returns true when the command should end.
   @Override

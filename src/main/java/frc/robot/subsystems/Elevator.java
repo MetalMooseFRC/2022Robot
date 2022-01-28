@@ -14,10 +14,10 @@ import frc.robot.Constants;
 
 
 public class Elevator extends SubsystemBase {
-  private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_ELEVATOR_LEFT_4_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_ELEVATOR_LEFT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
   public final RelativeEncoder leftElevatorEncoder = m_motorLeft.getEncoder();
   
-  private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_ELEVATOR_RIGHT_4_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_ELEVATOR_RIGHT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
   public final RelativeEncoder rightElevatorEncoder = m_motorRight.getEncoder();
 
   public final MotorControllerGroup elevatorControllerGroup = new MotorControllerGroup(m_motorLeft, m_motorRight);

@@ -38,16 +38,14 @@ public class RobotContainer {
   private Elevator m_elevator = new Elevator();
 
   //private final ColorSensor m_colorSensor = new ColorSensor();
-  //private final Limelight m_limelight = new Limelight();
+  private final Limelight m_limelight = new Limelight();
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // ************   Commands    ***************
-  //public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
+  public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
   public final Brake m_brake = new Brake(m_driveTrain);
-
-  //private final VisionFollow visionFollow = new VisionFollow();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {

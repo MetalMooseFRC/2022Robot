@@ -28,8 +28,12 @@ public final class Constants {
     public static final int MOTOR_RIGHT_2_ID = 2;
 	public static final int MOTOR_RIGHT_3_ID = 3;
 	
-	public static final int MOTOR_ELEVATOR_LEFT_4_ID = 7;
-	public static final int MOTOR_ELEVATOR_RIGHT_4_ID = 8;
+	public static final int MOTOR_ELEVATOR_LEFT_ID = 7;
+	public static final int MOTOR_ELEVATOR_RIGHT_ID = 8;
+
+	// FIXME: This currently is same as elevator
+	public static final int MOTOR_TURRET_LEFT_ID = 7;
+	public static final int MOTOR_TURRET_RIGHT_ID = 8;
 
 	public static final int DRIVER_STICK_PORT = 0;
 	public static final int OP_STICK_PORT = 1;
@@ -62,4 +66,6 @@ public final class Constants {
 	public static final double VISION_FF = 0.14;
 	// robot can see 27*2 degrees and so this gives some room for error
 	public static final double VISION_FOV_ERROR = 5/27;
+	// 20:1 Gearbox so 20* number of rotations desired will be elevator change
+	public static final double ELEVATOR_RANGE = 20*10;
 }
