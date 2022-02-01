@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.RelativeEncoder;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -15,19 +16,18 @@ import frc.robot.Constants;
 public class Turret extends SubsystemBase {
 
   // Left motor, encoder
-  private final CANSparkMax m_motorLeft = new CANSparkMax(Constants.MOTOR_TURRET_LEFT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-  public final RelativeEncoder leftTurretEncoder = m_motorLeft.getEncoder();
-  // public final MotorControllerGroup leftTurretControllerGroup = new MotorControllerGroup(m_motorLeft);
+  public final CANSparkMax motorLeft = new CANSparkMax(Constants.MOTOR_TURRET_LEFT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public final RelativeEncoder leftTurretEncoder = motorLeft.getEncoder();
+  // public final MotorControllerGroup leftTurretControllerGroup = new MotorControllerGroup(motorLeft);
   
   // Right motor, encoder
-  private final CANSparkMax m_motorRight = new CANSparkMax(Constants.MOTOR_TURRET_RIGHT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-  public final RelativeEncoder rightTurretEncoder = m_motorRight.getEncoder();   
-  // public final MotorControllerGroup rightTurretControllerGroup = new MotorControllerGroup(m_motorRight);
+  public final CANSparkMax motorRight = new CANSparkMax(Constants.MOTOR_TURRET_RIGHT_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  public final RelativeEncoder rightTurretEncoder = motorRight.getEncoder();   
+  // public final MotorControllerGroup rightTurretControllerGroup = new MotorControllerGroup(motorRight);
 
-  
   /** Creates a new Turret. */
   public Turret() {
-    m_motorRight.setInverted(true);
+    motorRight.setInverted(true);
   }
 
   

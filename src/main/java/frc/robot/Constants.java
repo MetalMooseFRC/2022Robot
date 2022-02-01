@@ -67,5 +67,5 @@ public final class Constants {
 	// robot can see 27*2 degrees and so this gives some room for error
 	public static final double VISION_FOV_ERROR = 5/27;
 	// 20:1 Gearbox so 20* number of rotations desired will be elevator change
-	public static final double ELEVATOR_RANGE = 20*10;
+	public static final double ELEVATOR_RANGE = 20*1;
 }

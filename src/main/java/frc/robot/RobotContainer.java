@@ -7,12 +7,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.TurretControl;
 import frc.robot.commands.VisionFollow;
 import frc.robot.commands.Brake;
 import frc.robot.commands.DriveArcade;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
@@ -35,7 +37,8 @@ public class RobotContainer {
 
   // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();
-  private Elevator m_elevator = new Elevator();
+  // private Elevator m_elevator = new Elevator();
+  private Turret m_turret = new Turret();
 
   //private final ColorSensor m_colorSensor = new ColorSensor();
   private final Limelight m_limelight = new Limelight();
@@ -56,8 +59,11 @@ public class RobotContainer {
           () -> -driverStick.getY(),
           () -> driverStick.getZ(),
           m_driveTrain));
-    ;
+
+    m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
   }
+
+
 
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -71,13 +77,14 @@ public class RobotContainer {
       //  lockonButton.whenHeld(m_visionFollow);
       final JoystickButton brakeButton = new JoystickButton(driverStick, Constants.DRIVER_BRAKE_BUTTON);
         brakeButton.whenHeld(m_brake);
+  
 
     // OPERATOR STICK BUTTONS
-      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
-        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
-      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
-        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
-    }
+      // final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
+      //   elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
+      // final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
+      //   elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));    }
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

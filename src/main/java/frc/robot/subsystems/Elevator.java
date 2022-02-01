@@ -27,7 +27,6 @@ public class Elevator extends SubsystemBase {
   public Elevator() {
     m_motorRight.setInverted(true);
   }
-
   
   @Override
   public void periodic() {
