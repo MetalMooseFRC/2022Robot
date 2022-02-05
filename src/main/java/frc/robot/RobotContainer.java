@@ -36,29 +36,31 @@ public class RobotContainer {
   private static final Joystick opStick = new Joystick(Constants.OP_STICK_PORT);
 
   // ************  Subsystems  **************
-  private DriveTrain m_driveTrain = new DriveTrain();
+  // private DriveTrain m_driveTrain = new DriveTrain();
   private Elevator m_elevator = new Elevator();
   // private Turret m_turret = new Turret();
 
   //private final ColorSensor m_colorSensor = new ColorSensor();
-  private final Limelight m_limelight = new Limelight();
+  // private final Limelight m_limelight = new Limelight();
 
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // ************   Commands    ***************
-  public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
-  public final Brake m_brake = new Brake(m_driveTrain);
+  // public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
+  // public final Brake m_brake = new Brake(m_driveTrain);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
 
-    m_driveTrain.setDefaultCommand(new DriveArcade(
-          () -> -driverStick.getY(),
-          () -> driverStick.getZ(),
-          m_driveTrain));
+    // m_driveTrain.setDefaultCommand(new DriveArcade(
+    //       () -> -driverStick.getY(),
+    //       () -> driverStick.getZ(),
+    //       m_driveTrain));
+
+    m_elevator.setDefaultCommand(new ElevatorControl(m_elevator, () -> opStick.getY()));
 
     // m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
   }
@@ -75,16 +77,13 @@ public class RobotContainer {
     // DRIVER STICK BUTTONS
       //final JoystickButton lockonButton = new JoystickButton(driverStick, 2);
       //  lockonButton.whenHeld(m_visionFollow);
-      final JoystickButton brakeButton = new JoystickButton(driverStick, Constants.DRIVER_BRAKE_BUTTON);
-        brakeButton.whenHeld(m_brake);
+      // final JoystickButton brakeButton = new JoystickButton(driverStick, Constants.DRIVER_BRAKE_BUTTON);
+      //   brakeButton.whenHeld(m_brake);
   
 
     // OPERATOR STICK BUTTONS
-      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
-        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
-      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
-        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
-  }
+    // ^ Nothing RN ^
+    }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
