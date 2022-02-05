@@ -37,8 +37,8 @@ public class RobotContainer {
 
   // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();
-  // private Elevator m_elevator = new Elevator();
-  private Turret m_turret = new Turret();
+  private Elevator m_elevator = new Elevator();
+  // private Turret m_turret = new Turret();
 
   //private final ColorSensor m_colorSensor = new ColorSensor();
   private final Limelight m_limelight = new Limelight();
@@ -60,7 +60,7 @@ public class RobotContainer {
           () -> driverStick.getZ(),
           m_driveTrain));
 
-    m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
+    // m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
   }
 
 
@@ -80,10 +80,10 @@ public class RobotContainer {
   
 
     // OPERATOR STICK BUTTONS
-      // final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
-      //   elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
-      // final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
-      //   elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));    }
+      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
+        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
+      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
+        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
   }
 
   /**
