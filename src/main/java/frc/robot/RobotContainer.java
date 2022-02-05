@@ -80,10 +80,10 @@ public class RobotContainer {
   
 
     // OPERATOR STICK BUTTONS
-      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
-        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
-      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
-        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
+      final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
+        elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));
+      final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
+        elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
   }
 
   /**

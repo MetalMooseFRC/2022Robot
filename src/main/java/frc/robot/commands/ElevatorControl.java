@@ -49,10 +49,8 @@ public class ElevatorControl extends CommandBase {
     double pidOutput = m_pidController.calculate(m_elevator.leftElevatorEncoder.getPosition());
     SmartDashboard.putNumber("pidOutput Elevator", pidOutput);
     
-    //if (pidOutput < 0){pidOutput -= Constants.VISION_FF;}
-    //else if (pidOutput > 0){pidOutput += Constants.VISION_FF;}
-    // Make sure PID Controller is capped to 1 (more would be bad)
-    double clamp = 1;
+    // Make sure PID Controller is capped to at most 1 (more would be bad)
+    double clamp = .1;
     pidOutput = Math.max(-clamp, Math.min(clamp, pidOutput));
 
     m_elevator.elevatorControllerGroup.set(pidOutput);
