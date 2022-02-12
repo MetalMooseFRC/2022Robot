@@ -33,7 +33,7 @@ public class RobotContainer {
 
   // ************  OI Controller  ***************
   private static final Joystick driverStick = new Joystick(Constants.DRIVER_STICK_PORT);
-  private static final Joystick opStick = new Joystick(Constants.OP_STICK_PORT);
+  // private static final Joystick opStick = new Joystick(Constants.OP_STICK_PORT);
 
   // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();

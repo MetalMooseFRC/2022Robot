@@ -43,9 +43,17 @@ public class DriveTrain extends SubsystemBase {
 
   @Override
   public void periodic() {
+    double motorsLeftOutputCurrent = m_motorLeft1.getOutputCurrent() + m_motorLeft2.getOutputCurrent() + m_motorLeft3.getOutputCurrent();
+    double motorsRightOutputCurrent = m_motorRight1.getOutputCurrent() + m_motorRight2.getOutputCurrent() + m_motorRight3.getOutputCurrent();
+    double motorsOutputCurrent = motorsLeftOutputCurrent + motorsRightOutputCurrent;
+
+    SmartDashboard.putNumber("Drivetrain Motors Output", motorsOutputCurrent);
+    System.out.println("Drivetrain Motors Output" + motorsOutputCurrent);
+
+
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Right Encoder", m_motorRight_encoder.getPosition());
-    SmartDashboard.putNumber("Left Encoder", m_motorLeft_encoder.getPosition());
+    // SmartDashboard.putNumber("Right Encoder", m_motorRight_encoder.getPosition());
+    // SmartDashboard.putNumber("Left Encoder", m_motorLeft_encoder.getPosition());
 
   }
 }
