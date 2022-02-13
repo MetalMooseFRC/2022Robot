@@ -4,11 +4,13 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class PneumaticsControl extends CommandBase {
   /** Creates a new PneumaticsControl. */
-  public PneumaticsControl() {
+  public PneumaticsControl(DoubleSolenoid exampleDoublePH) {
+    
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -18,7 +20,12 @@ public class PneumaticsControl extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+  exampleDoublePCM.set(kOff);
+  exampleDoublePCM.set(kForward);
+  exampleDoublePCM.set(kReverse);
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override

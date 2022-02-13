@@ -14,6 +14,7 @@ import frc.robot.commands.DriveArcade;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Turret;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.DriveTrain;
@@ -21,6 +22,12 @@ import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+// Using "import static an.enum.or.constants.inner.class.*;" helps reduce verbosity
+// this replaces "DoubleSolenoid.Value.kForward" with just kForward
+// further reading is available at https://www.geeksforgeeks.org/static-import-java/
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,7 +40,7 @@ public class RobotContainer {
 
   // ************  OI Controller  ***************
   private static final Joystick driverStick = new Joystick(Constants.DRIVER_STICK_PORT);
-  // private static final Joystick opStick = new Joystick(Constants.OP_STICK_PORT);
+  private static final Joystick opStick = new Joystick(Constants.OP_STICK_PORT);
 
   // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();
@@ -49,6 +56,7 @@ public class RobotContainer {
   // ************   Commands    ***************
   //public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
   //public final Brake m_brake = new Brake(m_driveTrain);
+  public final Pneumatics m_pneumatics = new Pneumatics();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -81,9 +89,15 @@ public class RobotContainer {
 
     // OPERATOR STICK BUTTONS
       // final JoystickButton elevatorDownButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_UP_BUTTON);
-      //   elevatorDownButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_UP_BUTTON));
+      //   elevatorDownButton.whenPressed(new ElevatorControl(m_elevator90, Constants.OP_ELEVATOR_UP_BUTTON));
       // final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
       //   elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));    }
+      //FIXME: Make constant
+      // FIXME: Must make this a command
+      final JoystickButton collectorUpButton = new JoystickButton(opStick, 4);
+        collectorUpButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kForward));
+      final JoystickButton collectorDownButton = new JoystickButton(opStick, 5);
+        collectorDownButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kReverse));
   }
 
   /**
