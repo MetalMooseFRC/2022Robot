@@ -19,6 +19,9 @@ public final class Constants {
 	// OPERATOR JOYSTICK BUTTONS
 	public static final int OP_ELEVATOR_UP_BUTTON = 6;
 	public static final int OP_ELEVATOR_DOWN_BUTTON = 4;
+	//FIXME operator elevator and collector are same buttons
+	public static final int OP_COLLECTOR_UP_BUTTON = 4;
+	public static final int OP_COLLECTOR_DOWN_BUTTON = 5;
 
 	public static final int MOTOR_LEFT_1_ID = 4;
 	public static final int MOTOR_LEFT_2_ID = 5;
@@ -68,4 +71,7 @@ public final class Constants {
 	public static final double VISION_FOV_ERROR = 5/27;
 	// 20:1 Gearbox so 20* number of rotations desired will be elevator change
 	public static final double ELEVATOR_RANGE = 20*1;
+
+	//lifter motor canid
+	public static final int LIFTER_MOTOR_ID = 11; 
 }

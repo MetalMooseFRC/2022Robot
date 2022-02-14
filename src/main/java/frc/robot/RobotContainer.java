@@ -7,12 +7,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.LifterControl;
 import frc.robot.commands.TurretControl;
 import frc.robot.commands.VisionFollow;
 import frc.robot.commands.Brake;
 import frc.robot.commands.DriveArcade;
 import frc.robot.commands.ElevatorControl;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Lifter;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Turret;
@@ -44,9 +46,10 @@ public class RobotContainer {
 
   // ************  Subsystems  **************
   private DriveTrain m_driveTrain = new DriveTrain();
-  // private Elevator m_elevator = new Elevator();
+  private Lifter m_lifter = new Lifter();
+  // public final Pneumatics m_pneumatics = new Pneumatics();
+  //private Elevator m_elevator = new Elevator();
   //private Turret m_turret = new Turret();
-
   //private final ColorSensor m_colorSensor = new ColorSensor();
   //private final Limelight m_limelight = new Limelight();
 
@@ -56,7 +59,6 @@ public class RobotContainer {
   // ************   Commands    ***************
   //public final VisionFollow m_visionFollow = new VisionFollow(m_limelight, m_driveTrain);
   //public final Brake m_brake = new Brake(m_driveTrain);
-  public final Pneumatics m_pneumatics = new Pneumatics();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -67,6 +69,8 @@ public class RobotContainer {
           () -> -driverStick.getY(),
           () -> driverStick.getZ(),
           m_driveTrain));
+
+    m_lifter.setDefaultCommand(new LifterControl(m_lifter, () -> m_lifter.getSlider()));
 
     //m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
   }
@@ -92,12 +96,11 @@ public class RobotContainer {
       //   elevatorDownButton.whenPressed(new ElevatorControl(m_elevator90, Constants.OP_ELEVATOR_UP_BUTTON));
       // final JoystickButton elevatorUpButton = new JoystickButton(opStick, Constants.OP_ELEVATOR_DOWN_BUTTON);
       //   elevatorUpButton.whenPressed(new ElevatorControl(m_elevator, Constants.OP_ELEVATOR_DOWN_BUTTON));    }
-      //FIXME: Make constant
-      // FIXME: Must make this a command
-      final JoystickButton collectorUpButton = new JoystickButton(opStick, 4);
-        collectorUpButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kForward));
-      final JoystickButton collectorDownButton = new JoystickButton(opStick, 5);
-        collectorDownButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kReverse));
+      // FIXME: Make constant
+      // final JoystickButton collectorUpButton = new JoystickButton(opStick, Constants.OP_COLLECTOR_UP_BUTTON);
+      //   collectorUpButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kForward));
+      // final JoystickButton collectorDownButton = new JoystickButton(opStick, Constants.OP_COLLECTOR_DOWN_BUTTON);
+      //   collectorDownButton.whenPressed(() -> m_pneumatics.exampleDoublePH.set(kReverse));
   }
 
   /**
