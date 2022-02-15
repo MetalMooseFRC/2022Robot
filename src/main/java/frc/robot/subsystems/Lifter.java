@@ -27,9 +27,11 @@ public class Lifter extends SubsystemBase {
   public void periodic() {}
 
   public double getControlSpeed() {
+    // If toggle is off, return 0
     if (m_lifterToggle.getBoolean(false) == false){
       return 0.0;
     }
+    // Else return slider value
     else {
       return m_lifterSpeed.getDouble(0);
     }
