@@ -26,7 +26,7 @@ public class Lifter extends SubsystemBase {
   @Override
   public void periodic() {}
 
-  public double getSlider() {
+  public double getControlSpeed() {
     if (m_lifterToggle.getBoolean(false) == false){
       return 0.0;
     }

@@ -70,7 +70,7 @@ public class RobotContainer {
           () -> driverStick.getZ(),
           m_driveTrain));
 
-    m_lifter.setDefaultCommand(new LifterControl(m_lifter, () -> m_lifter.getSlider()));
+    m_lifter.setDefaultCommand(new LifterControl(m_lifter, () -> m_lifter.getControlSpeed()));
 
     //m_turret.setDefaultCommand(new TurretControl(m_turret, () -> opStick.getTwist()));
   }
